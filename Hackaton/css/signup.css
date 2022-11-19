@@ -1,0 +1,28 @@
+.sign-up-container{
+    width:max-content;
+    height: auto;
+    border:2px solid #999;
+    border-radius: 10px;
+    padding: 30px;
+    overflow: hidden;
+    margin:50px;
+}
+
+.step{
+    cursor: pointer !important;
+}
+.step-4:hover{
+    background-color:  	#ff0000 !important;
+}
+.step-3:hover{
+    background-color:  	#ffa700 !important;
+}
+.step-2:hover{
+    background-color:  	#fff400 !important;
+}
+.step-1:hover{
+    background-color:  	#a3ff00 !important;
+}
+.step-0:hover{
+    background-color:  	#2cba00 !important;
+}
