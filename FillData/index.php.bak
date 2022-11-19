@@ -1,0 +1,7 @@
+<?php
+
+//$content = exec(".\phantomjs.exe getData.js https://www.sistemulenergetic.ro/");
+echo $content;
+
+
+?>
