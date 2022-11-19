@@ -1,4 +1,7 @@
 <?php
+
+if(!session_id()) session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -36,8 +39,8 @@ if ($conn->connect_error) {
 $nume = stripslashes($nume);
 $nume = mysqli_real_escape_string($conn,$nume);
 $sql = "SELECT * FROM pyramid.user where Nume='$nume'";
-$GLOBALS["User"]=GetSingleLine($conn,$sql);
-//var_dump($GLOBALS["User"]);
+$_SESSION["User"]=GetSingleLine($conn,$sql);
+var_dump($_SESSION["User"]);
 $conn->close();
 
 

@@ -1,3 +1,19 @@
+
+
+<?php
+
+if(!session_id()) session_start();
+
+
+
+var_dump($_SESSION["User"]);
+
+// if(isset($_SESSION["User"])==false)
+//     header('Location: login.html');
+
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,10 +40,10 @@
   
   <div id="main">
     <div class="d-flex justify-content-between">
-        <span style="font-size:30px;cursor:pointer">&#9776; <span class="mx-3">Dashboard</span></span>
+        <span style="font-size:30px;cursor:pointer">&#9776; <span class="mx-3">Dashboard, salut <?php echo $_SESSION["User"]["Nume"]; ?></span></span>
         <div class="d-flex" id="signout">
             <i class="user outline icon"></i>
-            <h5 style="font-weight:bold">Teo</h5>
+            <h5 style="font-weight:bold">Logout</h5>
         </div>
     </div>
     <div class="page-content my-5">        
@@ -49,7 +65,7 @@
             </div>
         </div>
 
-
+        aici
 
 
     </div>
@@ -59,6 +75,7 @@
     <script src="index.js"></script>
     <script>
         $('#signout').click(function(){
+            <?php //session_destroy(); ?>
             window.location.href = "login.html";
         })
     </script>

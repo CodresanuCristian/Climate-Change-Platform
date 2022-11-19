@@ -1,4 +1,8 @@
 <?php
+
+if(!session_id()) session_start();
+
+
 $servername = "localhost";
 $username = "root";
 $password = "";

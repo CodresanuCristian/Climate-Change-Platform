@@ -131,6 +131,7 @@
                 alert("completeaza tot");
                 return;
             }
+        let username=$('input').val();
         $.ajax({
             type:"POST",
             url:"addsignup.php",
@@ -143,9 +144,25 @@
             },
             success:function(data){
                 if (data == '')
-                    window.location.href = "login.html";
+                {
+                    //window.location.href = "login.html";
+
+
+                    $.ajax({
+                        type:"POST",
+                        url:"login.php",
+                        data:{ nume : username, 
+                        },
+                        success:function(data){
+                            window.location.href = "index.php";
+                        },
+                        error:function(){
+                            alert('eroare');
+                        }
+                    });
+                }
                 else
-                    alert('nume existent: '+data  );
+                    alert('nume existent: '  );
             },
             error:function(){
                 alert('eroare');
