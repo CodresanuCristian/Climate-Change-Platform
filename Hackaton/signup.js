@@ -146,14 +146,15 @@
                 if (data == '')
                 {
                     //window.location.href = "login.html";
-
+                    //alert("aiciddd");
 
                     $.ajax({
                         type:"POST",
-                        url:"login.php",
+                        url:"do_login.php",
                         data:{ nume : username, 
                         },
                         success:function(data){
+                            //alert("si mai aici"+username+" data "+data);
                             window.location.href = "index.php";
                         },
                         error:function(){

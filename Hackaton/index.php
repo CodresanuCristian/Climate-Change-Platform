@@ -6,10 +6,9 @@ if(!session_id()) session_start();
 
 
 
-var_dump($_SESSION["User"]);
 
-// if(isset($_SESSION["User"])==false)
-//     header('Location: login.html');
+if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
+    header('Location: login.php');
 
 ?>
 
@@ -33,8 +32,8 @@ var_dump($_SESSION["User"]);
     
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="index.html">Dashboard</a>
-    <a href="maps.html">Maps</a>
+    <a href="index.php">Dashboard</a>
+    <a href="maps.php">Maps</a>
     <a href="news.php">News</a>
   </div>
   
@@ -75,8 +74,8 @@ var_dump($_SESSION["User"]);
     <script src="index.js"></script>
     <script>
         $('#signout').click(function(){
-            <?php //session_destroy(); ?>
-            window.location.href = "login.html";
+            <?php session_destroy(); ?>
+            window.location.href = "login.php";
         })
     </script>
 </body>

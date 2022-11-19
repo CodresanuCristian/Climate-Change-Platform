@@ -3,7 +3,7 @@ $('#loginbtn').click(function()
 {
     $.ajax({
         type:"POST",
-        url:"login.php",
+        url:"do_login.php",
         data:{ nume : $('input').val(), 
         },
         success:function(data)
