@@ -56,9 +56,7 @@ $conn = new mysqli($servername, $username, $password);
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
 
-<<script>
-  var Transport=-1,Mancare=-1,Curent=-1,ApaCaldaSiRece =-1,Reciclat =-1;
-</script>
+
 <body class="d-flex justify-content-center align-items-center py-5">
 
     <div class="sign-up-container my-5">
@@ -82,7 +80,7 @@ $conn = new mysqli($servername, $username, $password);
                         $ID=$data["ID"];
                         $Txt=$data["Transport"];
                           echo "
-                          <div class='step step-$ID' id='transport'>
+                          <div class='step transport step-$ID' id='$ID'>
                             <div class='content'>
                               <div class='title'>$Txt</div>
                               <div class='description'>$ID</div>
@@ -104,7 +102,7 @@ $conn = new mysqli($servername, $username, $password);
                         $ID=$data["ID"];
                         $Txt=$data["Mancare"];
                           echo "
-                          <div class='step step-$ID id='mancare'>
+                          <div class='step mancare step-$ID' id='$ID'>
                             <div class='content'>
                               <div class='title'>$Txt</div>
                               <div class='description'>$ID</div>
@@ -126,7 +124,7 @@ $conn = new mysqli($servername, $username, $password);
                         $ID=$data["ID"];
                         $Txt=$data["Curent"];
                           echo "
-                          <div class='step step-$ID' id='curent'>
+                          <div class='step curent step-$ID' id='$ID'>
                             <div class='content'>
                               <div class='title'>$Txt</div>
                               <div class='description'>$ID</div>
@@ -139,7 +137,7 @@ $conn = new mysqli($servername, $username, $password);
 
 
                 
-                <h4 class="mt-5">ApaCaldaSiRece (MC/persoana pe luna)</h4>
+                <h4 class="mt-5">Apa (calda+rece, MC/persoana pe luna)</h4>
                 <div class="ui steps d-flex justify-content-center">
 
                     <?php
@@ -149,7 +147,7 @@ $conn = new mysqli($servername, $username, $password);
                         $ID=$data["ID"];
                         $Txt=$data["ApaCaldaSiRece"];
                           echo "
-                          <div class='step step-$ID' id='apa'>
+                          <div class='step apa step-$ID' id='$ID'>
                             <div class='content'>
                               <div class='title'>$Txt</div>
                               <div class='description'>$ID</div>
@@ -161,7 +159,7 @@ $conn = new mysqli($servername, $username, $password);
 
 
                 
-                <h4 class="mt-5">Reciclat (in cate fractii ?)</h4>
+                <h4 class="mt-5">Reciclat (in cate fractii imparti gunoiul ?)</h4>
                 <div class="ui steps d-flex justify-content-center">
 
                     <?php
@@ -171,7 +169,7 @@ $conn = new mysqli($servername, $username, $password);
                         $ID=$data["ID"];
                         $Txt=$data["Reciclat"];
                           echo "
-                          <div class='step step-$ID' id='reciclat'>
+                          <div class='step reciclat step-$ID' id='$ID'>
                             <div class='content'>
                               <div class='title'>$Txt</div>
                               <div class='description'>$ID</div>

@@ -18,11 +18,15 @@
           }
         },
         error: function(){
-          alert('nu');
         }
     });
   
 
+
+function signout(){
+  alert('merge');
+  // window.location.href = "login.html";
+}
 
 
 function openNav() {

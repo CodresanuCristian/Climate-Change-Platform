@@ -26,3 +26,7 @@
 .step-0:hover{
     background-color:  	#2cba00 !important;
 }
+
+.step.transport.step-0.active{
+    background-color: #2cba00 !important; 
+}

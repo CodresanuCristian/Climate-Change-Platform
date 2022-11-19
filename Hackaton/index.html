@@ -17,12 +17,19 @@
     
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="http://localhost/Climate-Change-Platform/Hackaton/index.html">Dashboard</a>
-    <a href="http://localhost/Climate-Change-Platform/Hackaton/maps.html">Maps</a>
+    <a href="index.html">Dashboard</a>
+    <a href="maps.html">Maps</a>
+    <a href="news.php">News</a>
   </div>
   
   <div id="main">
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; <span class="mx-3">Dashboard</span></span>
+    <div class="d-flex justify-content-between">
+        <span style="font-size:30px;cursor:pointer">&#9776; <span class="mx-3">Dashboard</span></span>
+        <div class="d-flex" id="signout">
+            <i class="user outline icon"></i>
+            <h5 style="font-weight:bold">Teo</h5>
+        </div>
+    </div>
     <div class="page-content my-5">        
         <div class="date-utile d-flex">
             <div class="date-utile-box">
@@ -50,5 +57,10 @@
 
 
     <script src="index.js"></script>
+    <script>
+        $('#signout').click(function(){
+            window.location.href = "login.html";
+        })
+    </script>
 </body>
 </html>

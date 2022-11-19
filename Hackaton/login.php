@@ -4,7 +4,7 @@ $username = "root";
 $password = "";
 
 
-
+$nume = $_POST['nume'];
 
 function Q(&$con,$q,$PhpFile='File not implemented yet')
 {
@@ -19,14 +19,7 @@ function Q(&$con,$q,$PhpFile='File not implemented yet')
 	}
 	return $res;
 }
-function GetSingleValue(&$con,$String,$PhpFile='File not implemented yet') 
-{
-	$res = Q($con,$String);
-	while($data = mysqli_fetch_assoc($res))
-		foreach($data as $key => $value)
-			return $value;
-	return "?";
-}
+
 function GetSingleLine(&$con,$String,$PhpFile='File not implemented yet') 
 {
 	$res = Q($con,$String);
@@ -36,21 +29,16 @@ function GetSingleLine(&$con,$String,$PhpFile='File not implemented yet')
 }
 
 
-
-
-
-
-
 $conn = new mysqli($servername, $username, $password);
 if ($conn->connect_error) {
 	  die("Connection failed: " . $conn->connect_error);
 }
-
-$sql = "SELECT Val FROM pyramid.istoric_electricicate_romania order by date desc limit 1";
-echo GetSingleValue($conn,$sql);
+$nume = stripslashes($nume);
+$nume = mysqli_real_escape_string($conn,$nume);
+$sql = "SELECT * FROM pyramid.user where Nume='$nume'";
+$GLOBALS["User"]=GetSingleLine($conn,$sql);
+//var_dump($GLOBALS["User"]);
 $conn->close();
 
 
-
 ?>
-

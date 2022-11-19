@@ -4,6 +4,12 @@ $username = "root";
 $password = "";
 
 
+$name = $_POST["name"];
+$transport = $_POST["transport"];
+$mancare = $_POST["mancare"];
+$curent = $_POST["curent"];
+$apa = $_POST["apa"];
+$reciclat = $_POST["reciclat"];
 
 
 function Q(&$con,$q,$PhpFile='File not implemented yet')
@@ -19,14 +25,6 @@ function Q(&$con,$q,$PhpFile='File not implemented yet')
 	}
 	return $res;
 }
-function GetSingleValue(&$con,$String,$PhpFile='File not implemented yet') 
-{
-	$res = Q($con,$String);
-	while($data = mysqli_fetch_assoc($res))
-		foreach($data as $key => $value)
-			return $value;
-	return "?";
-}
 function GetSingleLine(&$con,$String,$PhpFile='File not implemented yet') 
 {
 	$res = Q($con,$String);
@@ -36,21 +34,22 @@ function GetSingleLine(&$con,$String,$PhpFile='File not implemented yet')
 }
 
 
-
-
-
-
-
 $conn = new mysqli($servername, $username, $password);
 if ($conn->connect_error) {
 	  die("Connection failed: " . $conn->connect_error);
 }
+$name = stripslashes($name);
+$name = mysqli_real_escape_string($conn,$name);
 
-$sql = "SELECT Val FROM pyramid.istoric_electricicate_romania order by date desc limit 1";
-echo GetSingleValue($conn,$sql);
+$sql = "INSERT INTO pyramid.user(Nume, Lat, Lon, Oras, Tara, Transport, Mancare, Electricitate, ApaCaldaSiRece, Reciclat) VALUES ('$name',-1,-1,'','',$transport,$mancare,$curent,$apa,$reciclat)";
+Q($conn,$sql);
+
+
+
+// $sql = "SELECT * FROM pyramid.user where Nume='$name'";
+// $GLOBALS["User"]=GetSingleLine($conn,$sql);
+
 $conn->close();
 
 
-
 ?>
-
