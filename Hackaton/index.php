@@ -97,19 +97,19 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
     </div>
     <div class="page-content my-5">        
         <div class="date-utile d-flex">
-            <div class="date-utile-box">
+            <div class="date-utile-box rounded">
                 <p class="m-0">Electricitate (<span class="electricitate-val"></span>)</p>
                 <i id='electricitate-icon' class="level down alternate icon red"></i>
             </div>
-            <div class="date-utile-box" style="border-left: 2px solid gainsboro;">
+            <div class="date-utile-box rounded" style="border-left: 2px solid gainsboro;">
                 <p class="m-0">Apa</p>
                 <i class="level down alternate icon red"></i>
             </div>
-            <div class="date-utile-box" style="border-left: 2px solid gainsboro;">
+            <div class="date-utile-box rounded" style="border-left: 2px solid gainsboro;">
                 <p class="m-0">Gaz</p>
                 <i class="level up alternate icon green"></i>
             </div>
-            <div class="date-utile-box" style="border-left: 2px solid gainsboro;">
+            <div class="date-utile-box rounded" style="border-left: 2px solid gainsboro;">
                 <p class="m-0">Temperatura: 20,5 </p>
             </div>
         </div>
@@ -121,9 +121,9 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
 
             <div class='xp d-flex flex-column justify-content-around'>
                 <h1><?php echo strtoupper($_SESSION["User"]["Nume"]); ?></h1>
-                <h5>Level: 13 <i class="star yellow icon"></i></h5>
+                <h2>Level: 13 <i class="star yellow icon"></i></h2>
                 <div>
-                <span>6500 XP / 10000 XP</span>
+                <span style='font-size:20px'>6500 XP / 10000 XP</span>
                 <div class="ui indicating blue progress">
                     <div class="bar"></div>
                     <div class="label">Funding</div>
@@ -134,15 +134,16 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
             <div class='achievements'>
                 <h3 class='text-center'>Achievements</h3>
                 <div class='d-flex justify-content-center align-items-center'>
-                <i class="trophy yellow icon"></i>
+                <img src="pic/trophy.png" width="200px" style="background: transparent;">
+                <!-- <i class="trophy yellow icon"></i> -->
 </div>
             </div>
         </div>
-
-        <div class="ui green message">
-            <div class="header">
+        <br>
+        <div class="p-3 mb-2 bg-success text-white rounded">
+            <h3>
                 Recomandari:
-            </div>
+            </h3>
             <ul class="list">
             <?php
 
@@ -162,11 +163,11 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
                     $FromTxt=GetSingleValue($conn2,"select $Tip from pyramid.definitii where ID=$DeLa");
                     $ToTxt=GetSingleValue($conn2,"select $Tip from pyramid.definitii where ID=$La");
 
-                    if ($Tip == 'Transport') echo "<li>$Tip: Poti incerca $FromTxt in loc de $ToTxt</li>";
-                    if ($Tip == 'Mancare') echo "<li>$Tip: Poti incerca sa consumi carne de la $FromTxt zile pe saptamana la  zi pe saptamana</li>";
-                    if ($Tip == 'Electricitate') echo "<li>$Tip: Poti incerca sa consumi $ToTxt KWH / luna in loc de $FromTxt KWH / luna</li>";
-                    if ($Tip == 'ApaCaldaSiRece') echo "<li>Apa: Poti incerca sa consumi $ToTxt MC / luna in loc de $FromTxt MC / persoana</li>";
-                    if ($Tip == 'Reciclat') echo "<li>$Tip: Poti incerca sa sortezi gunoiul in $FromTxt fractii in loc de $ToTxt fractii</li>";
+                    if ($Tip == 'Transport') echo "<li style='font-size:20px'>$Tip: Poti incerca $FromTxt in loc de $ToTxt</li>";
+                    if ($Tip == 'Mancare') echo "<li style='font-size:20px'>$Tip: Poti incerca sa consumi carne de la $FromTxt zile pe saptamana la $ToTxt zi pe saptamana</li>";
+                    if ($Tip == 'Electricitate') echo "<li style='font-size:20px'>$Tip: Poti incerca sa consumi $ToTxt KWH / luna in loc de $FromTxt KWH / luna</li>";
+                    if ($Tip == 'ApaCaldaSiRece') echo "<li style='font-size:20px'>Apa: Poti incerca sa consumi $ToTxt MC / luna in loc de $FromTxt MC / persoana</li>";
+                    if ($Tip == 'Reciclat') echo "<li style='font-size:20px'>$Tip: Poti incerca sa sortezi gunoiul in $FromTxt fractii in loc de $ToTxt fractii</li>";
 
                 }
 
@@ -175,13 +176,13 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
             </ul>
         </div>
 
-        <div class="ui blue message">
-            <div class="header">
+        <div class="p-3 mb-2 bg-primary text-white rounded" >
+            <h3>
                 Provocarea saptamanii:
-            </div>
+            </h3>
             <ul class="list">
-                <li>Incearca sa mergi 2 zile cu mijlocul de transport in comun</li>
-                <button class="ui tiny blue button mt-3">Efectuat</button>
+                <li style='font-size:20px'>Incearca sa mergi 2 zile cu mijlocul de transport in comun</li>
+                <button class="ui tiny button mt-3">Efectuat</button>
             </ul>
         </div>
 
@@ -189,8 +190,8 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
             <div class='my-5'>
 
 
-        <h5 class='text-center my-5'>Consuml tau de CO2, limita este de 50%
-        </h5>
+        <h1 class='text-center my-5'>Consumul tau de CO2, limita este de 50%
+            </h1>
         <div id="gauge2" class="gauge-container two"></div>
             </div>
         </div>
@@ -206,12 +207,13 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
 
 
 
+        <br>
+        <br>
 
 
 
 
-
-        <h5 class='text-center my-5' style="margin-top:150px;">Cum te raportezi la nivel national</h5>
+        <h1 class='text-center my-5' style="margin-top:150px;">Cum te raportezi la nivel national</h1>
     <div class="chartBox">
         <canvas id="myChart"></canvas>
     </div>
@@ -291,7 +293,7 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
         }
 
 
-    var borderColor = Array(x_vals.length).fill('rgba(255, 99, 132, 1)');
+    var borderColor = Array(x_vals.length).fill('rgba(69, 69, 69, 0.69)');
 
     backgroundColor[argx] = 'rgba(54, 162, 235, 0.2)';
     borderColor[argx] = 'rgba(54, 162, 235, 1)';

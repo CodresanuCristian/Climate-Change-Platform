@@ -100,9 +100,9 @@ body {
     stroke-dasharray: none;
     stroke-width: 13;
   }
-  .gauge-container.two > .gauge > .value {
+  /* .gauge-container.two > .gauge > .value {
     fill: orange;
-  }
+  } */
 
   .player{
     /* border: 1px solid red; */
@@ -139,3 +139,13 @@ body {
   .player .achievements i.icon, i.icons {
     font-size: 7em !important;
   }
+
+
+
+
+
+
+.date-utile-box
+{
+  background: linear-gradient(45deg, rgba(100,100,255,0.4), rgba(255,100,100,0.4));
+}
