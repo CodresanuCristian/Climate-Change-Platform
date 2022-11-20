@@ -145,7 +145,28 @@ body {
 
 
 
-.date-utile-box
+/* .date-utile-box
 {
   background: linear-gradient(45deg, rgba(100,100,255,0.4), rgba(255,100,100,0.4));
+} */
+
+
+#box-elec
+{
+  background: linear-gradient(45deg, rgba(26,117,187,0.4), rgba(40,170,224,0.4));
+}
+
+#box-apa
+{
+  background: linear-gradient(45deg, rgba(40,170,224,0.4), rgba(197,208,43,0.4));
+}
+
+#box-gaz
+{
+  background: linear-gradient(45deg, rgba(197,208,43,0.4), rgba(250,157,25,0.4));
+}
+
+#box-temp
+{
+  background: linear-gradient(45deg, rgba(250,157,25,0.4), rgba(240,60,34,0.4));
 }

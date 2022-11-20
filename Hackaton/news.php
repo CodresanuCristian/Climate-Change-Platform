@@ -43,21 +43,27 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
         <span style="font-size:30px;cursor:pointer"  onclick="openNav()">&#9776; <span class="mx-3">News</span></span>
         <span style="font-size:30px;cursor:pointer" ><i class="user icon"></i> Salut <?php echo strtoupper($_SESSION["User"]["Nume"]); ?></span>
     </div>
+
+    <div class="d-flex justify-content-center">
+        <img   src="pic/banner2.png" style="width:50%;" >
+    </div>
+
+    
     <div class="page-content my-5">        
         <div class="date-utile d-flex">
-            <div class="date-utile-box">
+            <div id="box-elec" class="date-utile-box rounded">
                 <p class="m-0">Electricitate (<span class="electricitate-val"></span>)</p>
                 <i id='electricitate-icon' class="level down alternate icon red"></i>
             </div>
-            <div class="date-utile-box" style="border-left: 2px solid gainsboro;">
+            <div id="box-apa" class="date-utile-box rounded" style="border-left: 2px solid gainsboro;">
                 <p class="m-0">Apa (to do)</p>
                 <i class="level down alternate icon red"></i>
             </div>
-            <div class="date-utile-box" style="border-left: 2px solid gainsboro;">
+            <div id="box-gaz" class="date-utile-box rounded" style="border-left: 2px solid gainsboro;">
                 <p class="m-0">Gaz (to do)</p>
                 <i class="level up alternate icon green"></i>
             </div>
-            <div class="date-utile-box" style="border-left: 2px solid gainsboro;">
+            <div id="box-temp" class="date-utile-box rounded" style="border-left: 2px solid gainsboro;">
                 <p class="m-0">Temperatura: (to do) </p>
             </div>
         </div>
