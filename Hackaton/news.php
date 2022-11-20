@@ -1,3 +1,14 @@
+
+
+<?php
+
+if(!session_id()) session_start();
+
+if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
+    header('Location: login.php');
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,15 +29,17 @@
     
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="index.html">Dashboard</a>
-    <a href="maps.html">Maps</a>
-    <a href="news/index.php">News</a>
+    <a href="index.php">Dashboard</a>
+    <a href="maps.php">Maps</a>
+    <a href="news.php">News</a>
+    <a href="skill.php">My skills</a>
+    <a href="logout.php">Logout</a>
   </div>
   
   <div id="main">
 
   <!-- PANEL -->
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; <span class="mx-3">News</span></span>
+  <span style="font-size:30px;cursor:pointer"  onclick="openNav()">&#9776; <span class="mx-3">News, salut <?php echo $_SESSION["User"]["Nume"]; ?></span></span>
     <div class="page-content my-5">        
         <div class="date-utile d-flex">
             <div class="date-utile-box">

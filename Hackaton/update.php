@@ -8,7 +8,7 @@ $username = "root";
 $password = "";
 
 
-$name = $_POST["name"];
+$name = $_SESSION["User"]["Nume"];
 $transport = $_POST["transport"];
 $mancare = $_POST["mancare"];
 $electricitate = $_POST["electricitate"];
@@ -45,10 +45,11 @@ if ($conn->connect_error) {
 $name = stripslashes($name);
 $name = mysqli_real_escape_string($conn,$name);
 
-$sql = "INSERT INTO pyramid.user(Nume, Lat, Lon, Oras, Tara, Transport, Mancare, Electricitate, ApaCaldaSiRece, Reciclat) VALUES ('$name',-1,-1,'','',$transport,$mancare,$electricitate,$apa,$reciclat)";
+$sql = "update pyramid.user set Transport=$transport, Mancare=$mancare, Electricitate=$electricitate, ApaCaldaSiRece=$apa, Reciclat=$reciclat where Nume='$name'";
 Q($conn,$sql);
 
-
+$sql = "SELECT * FROM pyramid.user where Nume='$name'";
+$_SESSION["User"]=GetSingleLine($conn,$sql);
 
 // $sql = "SELECT * FROM pyramid.user where Nume='$name'";
 // $GLOBALS["User"]=GetSingleLine($conn,$sql);

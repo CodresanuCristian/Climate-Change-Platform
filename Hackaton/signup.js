@@ -1,5 +1,7 @@
 
-    var Transport=-1,Mancare=-1,Curent=-1,ApaCaldaSiRece =-1,Reciclat =-1;
+    var Transport=-1,Mancare=-1,Electricitate=-1,ApaCaldaSiRece =-1,Reciclat =-1;
+
+    
 
     $('.transport').click(function(){
         for(id =0 ; id<5; id++)
@@ -14,7 +16,7 @@
     $('.curent').click(function(){
         for(id =0 ; id<5; id++)
             $('#'+id+'.curent').css({'background':'transparent'});
-        Curent = $(this).attr('id');
+        Electricitate = $(this).attr('id');
     });
     $('.apa').click(function(){
         for(id =0 ; id<5; id++)
@@ -124,9 +126,9 @@
 
 
 
-    $('#submit').click(function(){
+    $('#submitSignup').click(function(){
         
-        if(Transport<0 || Mancare <0 || Curent <0 || ApaCaldaSiRece <0 || Reciclat <0)
+        if(Transport<0 || Mancare <0 || Electricitate <0 || ApaCaldaSiRece <0 || Reciclat <0)
             {
                 alert("completeaza tot");
                 return;
@@ -138,7 +140,7 @@
             data:{ name : $('input').val(), 
                    transport : Transport,
                    mancare : Mancare, 
-                   curent : Curent, 
+                   electricitate : Electricitate, 
                    apa : ApaCaldaSiRece, 
                    reciclat : Reciclat, 
             },
@@ -164,6 +166,46 @@
                 }
                 else
                     alert('nume existent: '  );
+            },
+            error:function(){
+                alert('eroare');
+            }
+        });
+    })
+
+
+
+
+
+
+
+
+    
+    $('#submitSkill').click(function(){
+        
+        if(Transport<0 || Mancare <0 || Electricitate <0 || ApaCaldaSiRece <0 || Reciclat <0)
+            {
+                alert("completeaza tot");
+                return;
+            }
+        $.ajax({
+            type:"POST",
+            url:"update.php",
+            data:{ 
+                   transport : Transport,
+                   mancare : Mancare, 
+                   electricitate : Electricitate, 
+                   apa : ApaCaldaSiRece, 
+                   reciclat : Reciclat, 
+            },
+            success:function(data){
+                //alert(data);
+                if (data == '')
+                {
+                    window.location.href = "skill.php";
+                }
+                else
+                    alert(data);
             },
             error:function(){
                 alert('eroare');
