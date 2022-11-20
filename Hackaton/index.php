@@ -142,8 +142,11 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
         </div>
 
         <div>
-
+            <div class='my-5'>
+        <h5 class='md-4'>Consuml tau de CO2, limita este de 50%
+        </h5>
         <div id="gauge2" class="gauge-container two"></div>
+            </div>
         </div>
 
     </div>
@@ -151,5 +154,32 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
 
 
     <script src="index.js"></script>
+    <script type="text/javascript" src="gauge.js"> </script>
+    <script>
+        var gauge2 = Gauge(
+  document.getElementById("gauge2"),
+  {
+    min: 0,
+    max: 100,
+    dialStartAngle: 0,
+    dialEndAngle: 180,
+    value: <?php echo 5*($_SESSION["User"]["Transport"]+$_SESSION["User"]["Mancare"]+$_SESSION["User"]["Electricitate"]+$_SESSION["User"]["ApaCaldaSiRece"]+$_SESSION["User"]["Reciclat"]) ;?>,
+    viewBox: "0 0 500 57",
+    color: function(value) {
+      if(value < 20) {
+        return "#2cba00  ";
+      }else if(value < 40) {
+        return "#a3ff00  ";
+      }else if(value < 60) {
+        return "#fff400";
+      }else if(value < 80) {
+        return "#ffa700 ";
+      }else {
+        return "#ff0000  ";
+      }
+    }
+  }
+);
+</script>
 </body>
 </html>
