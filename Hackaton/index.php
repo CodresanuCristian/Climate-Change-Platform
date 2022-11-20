@@ -75,6 +75,21 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
     width: 80%;
     margin: auto;
   }
+
+
+  .header {
+  padding: 60px;
+  text-align: center;
+  background-image: url('pic/banner2.png');
+  /* background-size: 100% 100%; */
+  /* background: #1abc9c; */
+  background-position: center;
+    background-size: cover;s
+  color: white;
+  font-size: 30px;
+}
+
+
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
@@ -95,6 +110,16 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
         <span style="font-size:30px;cursor:pointer"  onclick="openNav()">&#9776; <span class="mx-3">Dashboard</span></span>
         <span style="font-size:30px;cursor:pointer" ><i class="user icon"></i> Salut <?php echo strtoupper($_SESSION["User"]["Nume"]); ?></span>
     </div>
+
+    <div class="d-flex justify-content-center">
+        <img   src="pic/banner2.png" style="width:50%;" >
+    </div>
+    <!-- <div class="header"> -->
+    <!-- <h1 style='background: rgba(20,20,20,0.5)'>Climate Change Platform</h1> -->
+    <!-- <p>My supercool header</p> -->
+    <!-- </div>  -->
+
+
     <div class="page-content my-5">        
         <div class="date-utile d-flex">
             <div class="date-utile-box rounded">
@@ -102,15 +127,15 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
                 <i id='electricitate-icon' class="level down alternate icon red"></i>
             </div>
             <div class="date-utile-box rounded" style="border-left: 2px solid gainsboro;">
-                <p class="m-0">Apa</p>
+                <p class="m-0">Apa (to do)</p>
                 <i class="level down alternate icon red"></i>
             </div>
             <div class="date-utile-box rounded" style="border-left: 2px solid gainsboro;">
-                <p class="m-0">Gaz</p>
+                <p class="m-0">Gaz (to do)</p>
                 <i class="level up alternate icon green"></i>
             </div>
             <div class="date-utile-box rounded" style="border-left: 2px solid gainsboro;">
-                <p class="m-0">Temperatura: 20,5 </p>
+                <p class="m-0">Temperatura: (to do) </p>
             </div>
         </div>
 
@@ -163,11 +188,11 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
                     $FromTxt=GetSingleValue($conn2,"select $Tip from pyramid.definitii where ID=$DeLa");
                     $ToTxt=GetSingleValue($conn2,"select $Tip from pyramid.definitii where ID=$La");
 
-                    if ($Tip == 'Transport') echo "<li style='font-size:20px'>$Tip: Poti incerca $FromTxt in loc de $ToTxt</li>";
+                    if ($Tip == 'Transport') echo "<li style='font-size:20px'>$Tip: Poti incerca $ToTxt in loc de $FromTxt</li>";
                     if ($Tip == 'Mancare') echo "<li style='font-size:20px'>$Tip: Poti incerca sa consumi carne de la $FromTxt zile pe saptamana la $ToTxt zi pe saptamana</li>";
                     if ($Tip == 'Electricitate') echo "<li style='font-size:20px'>$Tip: Poti incerca sa consumi $ToTxt KWH / luna in loc de $FromTxt KWH / luna</li>";
-                    if ($Tip == 'ApaCaldaSiRece') echo "<li style='font-size:20px'>Apa: Poti incerca sa consumi $ToTxt MC / luna in loc de $FromTxt MC / persoana</li>";
-                    if ($Tip == 'Reciclat') echo "<li style='font-size:20px'>$Tip: Poti incerca sa sortezi gunoiul in $FromTxt fractii in loc de $ToTxt fractii</li>";
+                    if ($Tip == 'ApaCaldaSiRece') echo "<li style='font-size:20px'>Apa: Poti incerca sa consumi $ToTxt MC / luna in loc de $FromTxt MC / luna</li>";
+                    if ($Tip == 'Reciclat') echo "<li style='font-size:20px'>$Tip: Poti incerca sa sortezi gunoiul in $ToTxt fractii in loc de $FromTxt fractii</li>";
 
                 }
 
