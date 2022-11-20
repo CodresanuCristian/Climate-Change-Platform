@@ -54,6 +54,11 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
 <!DOCTYPE html>
 <html>
     <head>
+                
+        <meta charset="UTF-8">
+        <meta name="author" content="Chart.js">
+
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js" integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -65,6 +70,14 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
     </head>
 <body>
 
+<style type="text/css">
+  .chartBox {
+    width: 80%;
+    margin: auto;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 
 
     
@@ -105,6 +118,18 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
         </div>
 
 
+        <div class='player mt-5'>
+            <div class='avatar'></div>
+            <div>
+                <h1><?php echo strtoupper($_SESSION["User"]["Nume"]); ?></h1>
+                <span>3000 XP/ 8000 XP</span>
+                <div class="ui indicating red progress">
+                    <div class="bar"></div>
+                    <div class="label">Funding</div>
+                </div>
+            </div>
+        </div>
+
         <div class="ui green message">
             <div class="header">
                 Recomandari:
@@ -141,13 +166,213 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
             </ul>
         </div>
 
+        <div class="ui blue message">
+            <div class="header">
+                Provocarea saptamanii:
+            </div>
+            <ul class="list">
+                <li>Incearca sa mergi 2 zile cu mijlocul de transport in comun</li>
+            </ul>
+        </div>
+
         <div>
             <div class='my-5'>
+
+
         <h5 class='md-4'>Consuml tau de CO2, limita este de 50%
         </h5>
         <div id="gauge2" class="gauge-container two"></div>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h5 class='md-4'>Cum te raportezi la nivel national</h5>
+    <div class="chartBox">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+
+
+
+    var EuBuget=<?php echo 5*($_SESSION["User"]["Transport"]+$_SESSION["User"]["Mancare"]+$_SESSION["User"]["Electricitate"]+$_SESSION["User"]["ApaCaldaSiRece"]+$_SESSION["User"]["Reciclat"]) ;?>;
+
+
+
+
+    var argx=0;
+
+
+    const x_vals = [
+
+    <?php
+
+        $conn3 = new mysqli($servername, $username, $password);
+        $res = Q($conn3,"SELECT 5*(Transport+Mancare+Electricitate+ApaCaldaSiRece+Reciclat) Scor,count(*) Caunt FROM pyramid.user group by Scor ORDER by Scor");
+        while($data = mysqli_fetch_assoc($res))
+            echo $data["Scor"].",";
+
+
+    ?>
+
+    ];
+    const y_vals = [
+
+
+        <?php
+
+        $conn4 = new mysqli($servername, $username, $password);
+        $res = Q($conn4,"SELECT 5*(Transport+Mancare+Electricitate+ApaCaldaSiRece+Reciclat) Scor,count(*) Caunt FROM pyramid.user group by Scor ORDER by Scor");
+        while($data = mysqli_fetch_assoc($res))
+            echo $data["Caunt"].",";
+
+
+        ?>
+
+    ]
+
+
+    // const x_vals = [0+2.5,5+2.5,15+2.5,20+2.5,25+2.5,30+2.5,35+2.5,40+2.5,45+2.5,50+2.5,55+2.5,60+2.5,65+2.5,70+2.5,75+2.5,80+2.5,85+2.5,90+2.5,100+2.5];
+    // const y_vals = [2,2,1,4,6,6,6,10,21,15,6,8,5,9,3,4,1,1,1];
+
+
+    for(var i=0;i<x_vals.length;i++)
+    {
+        if(x_vals[i]==EuBuget)
+            argx=i;
+        x_vals[i]+=2.5;
+    }
+
+    const data = x_vals.map((k, i) => ({x: k, y: y_vals[i]}));
+
+    var backgroundColor = Array(x_vals.length).fill('rgba(255, 99, 132, 0.2)');
+    for(var i=0;i<x_vals.length;i++)
+        {
+            var temp=100.0*i/(x_vals.length+1);
+
+
+            if(temp < 20) {
+                backgroundColor[i]="rgba(44, 186, 0, 0.5)   ";
+            }else if(temp < 40) {
+                backgroundColor[i]= "rgba(163,255,0, 0.5)";
+            }else if(temp < 60) {
+                backgroundColor[i]= "rgba(255,244,0, 0.5)";
+            }else if(temp < 80) {
+                backgroundColor[i]= "rgba(255,167,0, 0.5) ";
+            }else {
+                backgroundColor[i]= "rgba(255, 0, 0, 0.5)";
+            }
+
+        }
+
+
+    var borderColor = Array(x_vals.length).fill('rgba(255, 99, 132, 1)');
+
+    backgroundColor[argx] = 'rgba(54, 162, 235, 0.2)';
+    borderColor[argx] = 'rgba(54, 162, 235, 1)';
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            datasets: [{
+                label: 'Numar utilizatori',
+                data: data,
+                backgroundColor: backgroundColor,
+                borderColor: borderColor,
+                borderWidth: 1,
+                barPercentage: 1,
+                categoryPercentage: 1,
+                borderRadius: 5,
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'linear',
+                    offset: false,
+                    grid: {
+                    offset: false
+                    },
+                    ticks: {
+                    stepSize: 5
+                    },
+                    title: {
+                    display: true,
+                    text: 'Buget CO2',
+                    font: {
+                        size: 14
+                    }
+                    }
+                }, 
+                y: {
+                    // beginAtZero: true
+                    title: {
+                    display: true,
+                    text: 'Numar utilizatori',
+                    font: {
+                        size: 14
+                    }
+                    }
+                }
+            },
+            plugins: {
+            legend: {
+                display: false,
+                },
+            tooltip: {
+                callbacks: {
+                title: (items) => {
+                    if (!items.length) {
+                    return '';
+                    }
+                    const item = items[0];
+                    const x = item.parsed.x;
+                    const min = x - 2.5;
+                    const max = x + 2.5;
+                    return `Buget CO2: ${min} - ${max}`;
+                }
+                }
+            }
+            }
+        }
+    });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </div>
   </div>

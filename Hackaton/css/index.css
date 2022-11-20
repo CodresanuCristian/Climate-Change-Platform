@@ -103,3 +103,22 @@ body {
   .gauge-container.two > .gauge > .value {
     fill: orange;
   }
+
+  .player{
+    border: 1px solid red;
+    width:100%;
+    height: auto;
+    display: flex;
+  }
+
+  .player .avatar{
+    width:300px;
+    height: 300px;
+    border:1px solid green;
+    margin-right:50px;
+  }
+  
+  .ui.progress .bar{
+    width:63% !important;
+    min-width:63% !important;
+  }
