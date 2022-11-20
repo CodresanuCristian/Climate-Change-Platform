@@ -157,7 +157,7 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
             </div>
 </div>
             <div class='achievements'>
-                <h3 class='text-center'>Achievements</h3>
+                <h3 class='text-center'>Achievements (to do)</h3>
                 <div class='d-flex justify-content-center align-items-center'>
                 <img src="pic/trophy.png" width="200px" style="background: transparent;">
                 <!-- <i class="trophy yellow icon"></i> -->
@@ -215,8 +215,8 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
             <div class='my-5'>
 
 
-        <h1 class='text-center my-5'>Consumul tau de CO2, limita este de 50%
-            </h1>
+        <h2 class='text-center my-5'>Consumul tau de CO2 (limita este de 50% pentru a limita la mai putin de 2 grade incalzirea globala)
+            </h2>
         <div id="gauge2" class="gauge-container two"></div>
             </div>
         </div>
@@ -238,7 +238,7 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
 
 
 
-        <h1 class='text-center my-5' style="margin-top:150px;">Cum te raportezi la nivel national</h1>
+        <h2 class='text-center my-5' style="margin-top:150px;">Cum te raportezi la nivel national (esti reprezentat cu albastru in grafic)</h2>
     <div class="chartBox">
         <canvas id="myChart"></canvas>
     </div>

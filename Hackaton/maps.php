@@ -112,7 +112,7 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
         <img   src="pic/banner2.png" style="width:50%;" >
     </div>
 
-    
+
     <div class="page-content my-5">        
         <div class="date-utile d-flex">
             <div id="box-elec" class="date-utile-box rounded">
@@ -159,6 +159,8 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
 
 
 
+        <h2 class='text-center my-5'>Informatii pe judete (to do)
+            </h2>
 
 
 
