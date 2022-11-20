@@ -103,7 +103,10 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
   </div>
   
   <div id="main">
-  <span style="font-size:30px;cursor:pointer"  onclick="openNav()">&#9776; <span class="mx-3">Maps, salut <?php echo $_SESSION["User"]["Nume"]; ?></span></span>
+  <div class="d-flex justify-content-between">
+        <span style="font-size:30px;cursor:pointer"  onclick="openNav()">&#9776; <span class="mx-3">Maps</span></span>
+        <span style="font-size:30px;cursor:pointer" ><i class="user icon"></i> Salut <?php echo strtoupper($_SESSION["User"]["Nume"]); ?></span>
+    </div>
     <div class="page-content my-5">        
         <div class="date-utile d-flex">
             <div class="date-utile-box">

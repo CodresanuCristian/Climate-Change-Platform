@@ -92,11 +92,8 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
   
   <div id="main">
     <div class="d-flex justify-content-between">
-        <span style="font-size:30px;cursor:pointer"  onclick="openNav()">&#9776; <span class="mx-3">Dashboard, salut <?php echo $_SESSION["User"]["Nume"]; ?></span></span>
-        <!-- <div class="d-flex" id="signout">
-            <i class="user outline icon"></i>
-            <h5 style="font-weight:bold">Logout</h5>
-        </div> -->
+        <span style="font-size:30px;cursor:pointer"  onclick="openNav()">&#9776; <span class="mx-3">Dashboard</span></span>
+        <span style="font-size:30px;cursor:pointer" ><i class="user icon"></i> Salut <?php echo strtoupper($_SESSION["User"]["Nume"]); ?></span>
     </div>
     <div class="page-content my-5">        
         <div class="date-utile d-flex">
@@ -119,14 +116,26 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
 
 
         <div class='player mt-5'>
+            <div class='d-flex'>
             <div class='avatar'></div>
-            <div>
+
+            <div class='xp d-flex flex-column justify-content-around'>
                 <h1><?php echo strtoupper($_SESSION["User"]["Nume"]); ?></h1>
-                <span>3000 XP/ 8000 XP</span>
-                <div class="ui indicating red progress">
+                <h5>Level: 13 <i class="star yellow icon"></i></h5>
+                <div>
+                <span>6500 XP / 10000 XP</span>
+                <div class="ui indicating blue progress">
                     <div class="bar"></div>
                     <div class="label">Funding</div>
                 </div>
+</div>
+            </div>
+</div>
+            <div class='achievements'>
+                <h3 class='text-center'>Achievements</h3>
+                <div class='d-flex justify-content-center align-items-center'>
+                <i class="trophy yellow icon"></i>
+</div>
             </div>
         </div>
 
@@ -157,7 +166,7 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
                     if ($Tip == 'Mancare') echo "<li>$Tip: Poti incerca sa consumi carne de la $FromTxt zile pe saptamana la  zi pe saptamana</li>";
                     if ($Tip == 'Electricitate') echo "<li>$Tip: Poti incerca sa consumi $ToTxt KWH / luna in loc de $FromTxt KWH / luna</li>";
                     if ($Tip == 'ApaCaldaSiRece') echo "<li>Apa: Poti incerca sa consumi $ToTxt MC / luna in loc de $FromTxt MC / persoana</li>";
-                    if ($Tip == 'Reciclat') echo "<li>$Tip: Poti incerca sa sortezi gunoiul in $ToTxt fractii in loc de $FromTxt fractii</li>";
+                    if ($Tip == 'Reciclat') echo "<li>$Tip: Poti incerca sa sortezi gunoiul in $FromTxt fractii in loc de $ToTxt fractii</li>";
 
                 }
 
@@ -172,6 +181,7 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
             </div>
             <ul class="list">
                 <li>Incearca sa mergi 2 zile cu mijlocul de transport in comun</li>
+                <button class="ui tiny blue button mt-3">Efectuat</button>
             </ul>
         </div>
 
@@ -179,7 +189,7 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
             <div class='my-5'>
 
 
-        <h5 class='md-4'>Consuml tau de CO2, limita este de 50%
+        <h5 class='text-center my-5'>Consuml tau de CO2, limita este de 50%
         </h5>
         <div id="gauge2" class="gauge-container two"></div>
             </div>
@@ -201,7 +211,7 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
 
 
 
-        <h5 class='md-4'>Cum te raportezi la nivel national</h5>
+        <h5 class='text-center my-5' style="margin-top:150px;">Cum te raportezi la nivel national</h5>
     <div class="chartBox">
         <canvas id="myChart"></canvas>
     </div>
@@ -389,7 +399,7 @@ if(isset($_SESSION["User"])==false || $_SESSION["User"]=="?")
     dialStartAngle: 0,
     dialEndAngle: 180,
     value: <?php echo 5*($_SESSION["User"]["Transport"]+$_SESSION["User"]["Mancare"]+$_SESSION["User"]["Electricitate"]+$_SESSION["User"]["ApaCaldaSiRece"]+$_SESSION["User"]["Reciclat"]) ;?>,
-    viewBox: "0 0 500 57",
+    viewBox: "-200 0 500 57",
     color: function(value) {
       if(value < 20) {
         return "#2cba00  ";

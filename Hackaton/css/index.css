@@ -105,20 +105,37 @@ body {
   }
 
   .player{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width:100%;
     height: auto;
     display: flex;
+    justify-content: space-between;
   }
 
   .player .avatar{
-    width:300px;
-    height: 300px;
+    width:250px;
+    height: 250px;
     border:1px solid green;
     margin-right:50px;
+    background-image: url('../pic/avatar.JPEG');
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
   }
   
   .ui.progress .bar{
-    width:63% !important;
-    min-width:63% !important;
+    width:65% !important;
+    min-width:65% !important;
+  }
+
+  .player .xp{
+    width:500px;
+  }
+
+  .player .achievements{
+    width: 300px;
+  }
+
+  .player .achievements i.icon, i.icons {
+    font-size: 7em !important;
   }
